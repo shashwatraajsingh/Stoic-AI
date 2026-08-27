@@ -16,7 +16,7 @@ The Stoic AI is a conversational AI assistant that embodies the wisdom of ancien
 ### Prerequisites
 
 - Node.js 18+ installed
-- An OpenAI API key (or Anthropic API key)
+- One or more OpenRouter API keys
 
 ### Installation
 
@@ -36,9 +36,9 @@ npm install
 cp .env.example .env.local
 ```
 
-4. Add your API key to `.env.local`:
+4. Add your OpenRouter API key(s) to `.env.local` (comma-separated for round-robin rotation):
 ```
-OPENAI_API_KEY=your_openai_api_key_here
+OPENROUTER_API_KEYS=your_openrouter_key_here
 ```
 
 ### Running the Development Server
@@ -66,11 +66,11 @@ Click "Receive Today's Reflection" to get a brief Stoic meditation (2-5 sentence
 
 ## Technology Stack
 
-- **Framework**: Next.js 14+ (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS with custom ancient aesthetic theme
-- **AI**: OpenAI GPT-4 (or Anthropic Claude)
-- **State Management**: React Context API
+- **AI**: OpenRouter, routing each mode to its own free-tier model (nvidia/nemotron-3.5-lightning:free, minimax/minimax-m3:free, z-ai/glm-5.2:free)
+- **State Management**: In-memory React `useState` (no persistence, no Context)
 
 ## Design Philosophy
 
@@ -82,7 +82,7 @@ The easiest way to deploy is using the [Vercel Platform](https://vercel.com/new)
 
 1. Push your code to GitHub
 2. Import your repository in Vercel
-3. Add your `OPENAI_API_KEY` environment variable
+3. Add your `OPENROUTER_API_KEYS` environment variable
 4. Deploy
 
 ## License
